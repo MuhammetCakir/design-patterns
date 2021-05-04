@@ -8,79 +8,86 @@ namespace BuilderPatternBase
 
         public HouseBuilder()
         {
-            this.Reset();
-        }
-
-        public HouseBuilder Reset()
-        {
             house = new House();
+        }
+
+        public HouseBuilder BuildWindows(int windows)
+        {
+            house.windows += windows;
+
+            house.price += 10;
 
             return this;
         }
 
-        public HouseBuilder AddWindows(int windows)
+        public HouseBuilder BuildDoors(int doors)
         {
-            house.windows = windows;
+            house.doors += doors;
+
+            house.price += 50;
 
             return this;
         }
 
-        public HouseBuilder AddDoors(int doors)
+        public HouseBuilder BuildWalls(int walls)
         {
-            house.doors = doors;
+            house.walls += walls;
+
+            house.price += 100;
 
             return this;
         }
 
-        public HouseBuilder AddRooms(int rooms)
+        public HouseBuilder BuildRoom()
         {
-            house.rooms = rooms;
+            BuildWalls(4);
+            BuildDoors(1);
+            BuildWindows(2);
 
             return this;
         }
 
-        public HouseBuilder Floor(int floor)
+        public HouseBuilder Destroy()
         {
-            house.floor = floor;
+            house.windows = 0;
+            house.walls = 0;
+            house.doors = 0;
 
             return this;
         }
 
-        public HouseBuilder Garage(bool hasGarage)
+        public HouseBuilder BuildGarage()
         {
-            house.hasGarage = hasGarage;
+            house.hasGarage = true;
+
+            house.price += 5000;
 
             return this;
         }
 
-        public HouseBuilder Facade(Facade facade)
+        public HouseBuilder SetCity(City city)
         {
-            house.facade = facade;
+            house.city = city;
 
-            return this;
-        }
-
-        public HouseBuilder SiteManagerPhone(String phone)
-        {
-            house.siteManagerPhone = phone;
-
-            return this;
-        }
-
-        public HouseBuilder Material(Material material)
-        {
-            house.material = material;
+            switch (city)
+            {
+                case City.Istanbul:
+                    house.price += 100000;
+                    break;
+                case City.Izmır:
+                    house.price += 50000;
+                    break;
+                case City.Trabzon:
+                    house.price += 10000;
+                    break;
+            }
 
             return this;
         }
 
         public House Build()
-        {
-            House product = this.house;
-
-            this.Reset();
-
-            return product;
+        { 
+            return house;
         }
     }
 }

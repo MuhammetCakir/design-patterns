@@ -8,36 +8,33 @@ namespace BuilderPatternBase
         static void Main(string[] args)
         {
 
-            // Type 1 using builder
-            HouseBuilder builder = new HouseBuilder();
-
-            builder.AddRooms(5)
-                .AddWindows(4)
-                .Floor(3)
-                .Facade(Facade.East);
-
-            House apartment = builder.Build();
-
-            // Type 2 using builder
-            House bungalow = builder.AddWindows(2)
-                .Material(Material.Wood)
+            House familyHouse = new HouseBuilder()
+                .BuildDoors(3)
+                .BuildWindows(1)
+                .BuildRoom()
+                .BuildGarage()
+                .SetCity(City.Istanbul)
                 .Build();
 
-            // Type 3 using builder
-            House familyHouse = new HouseBuilder()
-                .AddWindows(7)
-                .AddDoors(3)
-                .AddRooms(6)
-                .Garage(true)
-                .Material(Material.Stone)
+            House villageHouse = new HouseBuilder()
+                .BuildRoom()
+                .SetCity(City.Trabzon)
+                .Build();
+
+            House luxuryHouse = new HouseBuilder()
+                .BuildDoors(20)
+                .BuildWalls(30)
+                .BuildWindows(40)
+                .BuildGarage()
+                .SetCity(City.Izmır)
                 .Build();
 
 
             House[] houses =
             {
-                apartment,
-                bungalow,
-                familyHouse
+                familyHouse,
+                villageHouse,
+                luxuryHouse
             };
 
             // Write house attributes to the console.
@@ -48,12 +45,10 @@ namespace BuilderPatternBase
 
                 System.Console.WriteLine("Windows: " + house.windows);
                 System.Console.WriteLine("Doors: " + house.doors);
-                System.Console.WriteLine("Rooms: " + house.rooms);
-                System.Console.WriteLine("Floor: " + house.floor);
+                System.Console.WriteLine("Walls: " + house.walls);
                 System.Console.WriteLine("Garage: " + house.hasGarage);
-                System.Console.WriteLine("Facade: " + house.facade);
-                System.Console.WriteLine("Manager Phone: " + house.siteManagerPhone);
-                System.Console.WriteLine("Material: " + house.material);
+                System.Console.WriteLine("City: " + house.city);
+                System.Console.WriteLine("Price: " + house.price);
             }
         }
     }

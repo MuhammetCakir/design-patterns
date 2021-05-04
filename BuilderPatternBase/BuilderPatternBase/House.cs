@@ -7,19 +7,21 @@ namespace BuilderPatternBase
 
         public int doors;
 
-        public int rooms;
-
-        public int floor;
+        public int walls;
 
         public bool hasGarage;
 
-        public Facade facade;
+        public City city;
 
-        public String siteManagerPhone;
+        public int price;
 
-        public Material material;
-
-        public House() {}
+        public House() {
+            windows = 0;
+            doors = 0;
+            walls = 0;
+            price = 0;
+            hasGarage = false;
+        }
         
     }
 }
