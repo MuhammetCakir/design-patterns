@@ -4,7 +4,7 @@ namespace BuilderPatternBase
     public enum City
     {
         Istanbul,
-        Izmır,
+        Izmir,
         Trabzon
     }
 }
