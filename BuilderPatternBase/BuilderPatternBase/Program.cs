@@ -26,7 +26,7 @@ namespace BuilderPatternBase
                 .BuildWalls(30)
                 .BuildWindows(40)
                 .BuildGarage()
-                .SetCity(City.Izmır)
+                .SetCity(City.Izmir)
                 .Build();
 
 

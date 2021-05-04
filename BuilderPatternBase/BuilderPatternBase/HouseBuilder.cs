@@ -15,7 +15,7 @@ namespace BuilderPatternBase
         {
             house.windows += windows;
 
-            house.price += 10;
+            house.price += 10 * windows;
 
             return this;
         }
@@ -24,7 +24,7 @@ namespace BuilderPatternBase
         {
             house.doors += doors;
 
-            house.price += 50;
+            house.price += 50 * doors;
 
             return this;
         }
@@ -33,7 +33,7 @@ namespace BuilderPatternBase
         {
             house.walls += walls;
 
-            house.price += 100;
+            house.price += 100 * walls;
 
             return this;
         }
@@ -74,7 +74,7 @@ namespace BuilderPatternBase
                 case City.Istanbul:
                     house.price += 100000;
                     break;
-                case City.Izmır:
+                case City.Izmir:
                     house.price += 50000;
                     break;
                 case City.Trabzon:
